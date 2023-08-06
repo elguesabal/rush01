@@ -1,17 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_limpo.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joseanto <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 12:58:23 by joseanto          #+#    #+#             */
-/*   Updated: 2023/08/05 18:19:18 by joseanto         ###   ########.fr       */
+/*   Updated: 2023/08/06 10:12:34 by wfranco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
+
+int	set_number(int **set_num);
+int	set_number_up(int up1, int up2, int up3, int up4, int **set_n);
+int	set_number_down(int down1, int down2, int down3, int down4, int **set_n);
+int	set_number_left(int left1, int left2, int left3, int left4, int **set_n);
+int	set_number_right(int right1, int right2, int right3, int right4, int **set_n);
 
 int	main()
 {
@@ -42,55 +48,37 @@ int	main()
 	int	row4right = 2;
 
 
-
-
-
-
-
-
-
 	int	i;
 	int	j;
 
-	// comecei a criar a primeira matriz com o malloc
-	int	**dicas;
 
-	// cria um array com 4 posicoes
-	dicas = malloc(4 * sizeof(int*));
-
-	// cria 4 arrays que recebem arrays com 4 posicoes
-	i = 0;
-	while (i < 4)
-	{
-		dicas[i] = malloc(4 * sizeof(int));
-		i++;
-	}
-
-	// dei valor a cada posicao com o argumento passado pela funcao
 	
-	// cima
-	dicas[0][0] = col1up;
-	dicas[0][1] = col2up;
-	dicas[0][2] = col3up;
-	dicas[0][3] = col4up;
 
-	// baixo
-	dicas[1][0] = col1down;
-	dicas[1][1] = col2down;
-	dicas[1][2] = col3down;
-	dicas[1][3] = col4down;
+	// comecei a criar a primeira matriz com o malloc
+        int	**set_num;
 
-	// esqueda
-	dicas[2][0] = row1left;
-	dicas[2][1] = row2left;
-	dicas[2][2] = row3left;
-	dicas[2][3] = row4left;
+	// criei uma matriz apatir do int **set_num;
+	set_number(**set_num);
 
-	// direita
-	dicas[3][0] = row1right;
-	dicas[3][1] = row2right;
-	dicas[3][2] = row3right;
-	dicas[3][3] = row4right;
+	// atribui os valos de cima dentro da matriz
+	set_number_up(col1up, col2up, col3up, col4up, **set_num);
+
+	// atribui os valos de baixo dentro da matriz
+	set_number_down(col1down, col2down, col3down, col4down, **set_num);
+
+	// atribui os valos da esquerda dentro da matriz
+	set_number_left(row1left, row2left, row3left, row4left, **set_num);
+
+	// atribui os valos da direita dentro da matriz
+	set_number_right(row1right, row2right, row3right, row4right, **set_num)
+
+
+
+
+
+
+
+
 
 
 	// comecei a criar a segunda matriz com o malloc
@@ -141,7 +129,7 @@ int	main()
 		j = 0;
 		while (j != 4)
 		{
-			printf("%d", dicas[i][j]);
+			printf("%d", set_num[i][j]);
 			j++;
 		}
 		printf("\n");
